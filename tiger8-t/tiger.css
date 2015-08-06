@@ -1,0 +1,816 @@
+.vpage {
+  user-select: none;
+  -webkit-user-select: none;
+  bottom: 0;
+}
+#page-index {
+  background: url("images/background.jpg");
+  background-size: 100% 100%;
+}
+#page-index .vpage-content {
+  min-width: 320px;
+  margin: 0;
+}
+#page-index .vpage-content img {
+  width: 100%;
+  display: block;
+  margin: 0;
+}
+#page-index .vpage-content .top {
+  width: 257px;
+  height: 142px;
+  background: url("images/top.png");
+  background-size: 257px 142px;
+  margin: 6px auto 0 auto;
+  z-index: 2;
+/*
+			animation 1s bt infinite
+			&:active
+				background url(images/startbt-s.png)
+				background-size @width @height
+			*/
+}
+#page-index .vpage-content .icon1 {
+  width: 266px;
+  height: 257px;
+  background: url("images/icon1.png");
+  background-size: 266px 257px;
+  margin: 0 auto 0 auto;
+  z-index: 1;
+}
+#page-index .vpage-content .icon1 .startbt {
+  width: 55px;
+  height: 22px;
+  background: url("images/startbt.png");
+  background-size: 55px 22px;
+  position: absolute;
+  left: 63%;
+  margin-left: -27.5px;
+  top: 179px;
+}
+#page-index .vpage-content .icon1 .tiger {
+  width: 200px;
+  height: 138px;
+  background-size: 200px 138px;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -128px;
+  top: 14px;
+}
+#page-index .vpage-content .icon1 .tiger .machine {
+  width: 66px;
+  height: 115px;
+  background: #3a343f url("images/tiger-all2.png");
+  background-size: 66px 690px;
+  background-postion: top center;
+  background-repeat: repeat-y;
+  left: 5%;
+  top: 7px;
+  margin-left: 9px;
+}
+#page-index .vpage-content .icon1 .count {
+  width: 80px;
+  height: 22px;
+  position: absolute;
+  font-size: 12px;
+  left: 50%;
+  margin-left: -40px;
+  top: 220px;
+  text-align: center;
+  color: #fff;
+}
+#page-index .vpage-content .bottom {
+  width: 259px;
+  height: 48px;
+  background-size: 259px 48px;
+  margin: 0 auto 0 auto;
+  z-index: 1;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+}
+#page-index .vpage-content .bottom .myAward {
+  width: 84px;
+  height: 41px;
+  background: url("images/4_03.png");
+  background-size: 84px 41px;
+  background-postion: top center;
+}
+#page-index .vpage-content .bottom .activityRules {
+  width: 84px;
+  height: 41px;
+  background: url("images/4_05.png");
+  background-size: 84px 41px;
+  background-postion: top center;
+  margin-left: 41px;
+}
+.rules {
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+}
+.rules .rulesPanel {
+  width: 275px;
+  height: 400px;
+  background: url("images/rule.png");
+  background-size: 275px 400px;
+}
+.rules .rulesPanel .returnBt {
+  width: 84px;
+  height: 41px;
+  background: url("images/returnBt.png");
+  background-size: 84px 41px;
+  position: absolute;
+  left: 33%;
+  top: 78%;
+}
+.share {
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+}
+.share .sharepanel {
+  width: 275px;
+  height: 400px;
+  background: url("images/sharepanel.png");
+  background-size: 275px 400px;
+}
+.share .sharepanel .close {
+  width: 21px;
+  height: 21px;
+  background: url("images/close.png");
+  background-size: 21px 21px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+}
+.share .sharepanel .sharemark {
+  width: 84px;
+  height: 41px;
+  background: url("images/sharemark.png");
+  background-size: 84px 41px;
+  position: absolute;
+  left: 37%;
+  top: 78%;
+}
+.share .sharepanel .sharemark2 {
+  width: 275px;
+  height: 400px;
+  background: url("images/share-zhezhao.png");
+  background-size: 100% 100%;
+}
+.winSection {
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+}
+.winSection .star {
+  width: 275px;
+  height: 122px;
+  background: url("images/star.png");
+  background-size: 275px 122px;
+}
+.winSection .prizeName1 {
+  width: 275px;
+  height: 158px;
+  background: url("images/2-1.png");
+  background-size: 275px 158px;
+  margin-top: 36px;
+}
+.winSection .prizeName2 {
+  width: 275px;
+  height: 158px;
+  background: url("images/2-2.png");
+  background-size: 275px 158px;
+  margin-top: 36px;
+}
+.winSection .prizeName3 {
+  width: 275px;
+  height: 158px;
+  background: url("images/2-3.png");
+  background-size: 275px 158px;
+  margin-top: 36px;
+}
+.winSection .prizeName4 {
+  width: 275px;
+  height: 158px;
+  background: url("images/2-4.png");
+  background-size: 275px 158px;
+  margin-top: 36px;
+}
+.winSection .winPanel {
+  width: 275px;
+  height: 113px;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+  background-size: 275px 113px;
+  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
+  margin-top: 20px;
+}
+.winSection .winPanel .myAward_2 {
+  width: 84px;
+  height: 41px;
+  background: url("images/4_03.png");
+  background-size: 84px 41px;
+  margin-right: 42px;
+}
+.winSection .winPanel .repeatGame {
+  width: 84px;
+  height: 41px;
+  background: url("images/repeatGame.png");
+  background-size: 84px 41px;
+}
+.failSection {
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+}
+.failSection .fail_1 {
+  width: 160px;
+  height: 137px;
+  background: url("images/fail_1.png");
+  background-size: 160px 137px;
+}
+.failSection .fail_2 {
+  width: 275px;
+  height: 158px;
+  background: url("images/fail_2.png");
+  background-size: 275px 158px;
+  margin-top: 36px;
+}
+.failSection .failPanel {
+  width: 275px;
+  height: 113px;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+  background-size: 275px 113px;
+  box-orient: horizontal;
+  -webkit-box-orient: horizontal;
+  margin-top: 20px;
+}
+.failSection .failPanel .fail_3 {
+  width: 84px;
+  height: 41px;
+  background: url("images/fail_3.png");
+  background-size: 84px 41px;
+  margin-right: 42px;
+}
+.failSection .failPanel .fail_4 {
+  width: 84px;
+  height: 41px;
+  background: url("images/fail_4.png");
+  background-size: 84px 41px;
+}
+.sub {
+  position: fixed;
+  background: rgba(0,0,0,0.8);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10000;
+  display: box;
+  display: -webkit-box;
+  box-align: center;
+  -webkit-box-align: center;
+  box-pack: center;
+  -webkit-box-pack: center;
+}
+.sub .subpanel {
+  width: 275px;
+  height: 400px;
+  background: url("images/sub.jpg");
+  background-size: 275px 400px;
+}
+.sub .subpanel .close {
+  width: 21px;
+  height: 21px;
+  background: url("images/close.png");
+  background-size: 21px 21px;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+}
+.sub .subpanel .subbt {
+  width: 84px;
+  height: 41px;
+  background: url("images/subbt.png");
+  background-size: 84px 41px;
+  position: absolute;
+  left: 37%;
+  top: 78%;
+}
+#page-prize {
+  background: url("images/background.jpg");
+  background-size: 100% 100%;
+}
+#page-prize .vpage-content {
+  min-width: 320px;
+  margin: 0;
+}
+#page-prize .vpage-content img {
+  width: 100%;
+  display: block;
+  margin: 0;
+}
+#page-prize .vpage-content .rule {
+  width: 248px;
+  height: 44px;
+  background: url("images/1_17.png");
+  background-size: 248px 44px;
+  margin: 10px auto 0 auto;
+}
+#page-prize .vpage-content .lottery100 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery100 .button100 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery100_1 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1002 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1002 .button1002 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery100_2 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1003 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1003 .button1003 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery100_3 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1004 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1004 .button1004 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery100_4 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1005 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1005 .button1005 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery100_5 {
+  width: 286px;
+  height: 52px;
+  background: url("images/100_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery300 {
+  width: 286px;
+  height: 52px;
+  background: url("images/300.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery300 .button300 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery300_1 {
+  width: 286px;
+  height: 52px;
+  background: url("images/300_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery500 {
+  width: 286px;
+  height: 52px;
+  background: url("images/500.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery500 .button500 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery500_1 {
+  width: 286px;
+  height: 52px;
+  background: url("images/500_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1000 {
+  width: 286px;
+  height: 52px;
+  background: url("images/1000.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+#page-prize .vpage-content .lottery1000 .button1000 {
+  width: 55px;
+  height: 19px;
+  background: url("images/3.png");
+  background-size: 55px 19px;
+  position: absolute;
+  right: 2%;
+  margin-left: -26.5px;
+  top: 16px;
+}
+#page-prize .vpage-content .lottery1000_1 {
+  width: 286px;
+  height: 52px;
+  background: url("images/1000_1.png");
+  background-size: 286px 52px;
+  margin: 5px auto 0 auto;
+}
+.lotteryPanel {
+  width: 248px;
+  height: 44px;
+  background-size: 248px 44px;
+  margin: 5px auto 0 auto;
+  top: 80%;
+}
+.lotteryPanel .backbt {
+  width: 87px;
+  height: 41px;
+  background: url("images/returnBt.png");
+  background-size: 87px 41px;
+  position: absolute;
+  left: 26%;
+  margin-left: -42.5px;
+  top: 30px;
+}
+.lotteryPanel .detail {
+  width: 87px;
+  height: 41px;
+  background: url("images/detail.png");
+  background-size: 87px 41px;
+  position: absolute;
+  right: 11%;
+  margin-left: -42.5px;
+  top: 30px;
+}
+.lotteryPanel .backLottery {
+  width: 87px;
+  height: 41px;
+  background: url("images/backLottery.png");
+  background-size: 87px 41px;
+  position: absolute;
+  right: 11%;
+  margin-left: -42.5px;
+  top: 30px;
+}
+.prizeRules {
+  width: 288px;
+  height: 400px;
+  background: url("images/1_17.png");
+  background-size: 288px 400px;
+  margin: -40px auto 0 auto;
+}
+@-moz-keyframes line {
+  0% {
+    top: 3px;
+  }
+  50% {
+    top: 89px;
+  }
+  100% {
+    top: 3px;
+  }
+}
+@-webkit-keyframes line {
+  0% {
+    top: 3px;
+  }
+  50% {
+    top: 89px;
+  }
+  100% {
+    top: 3px;
+  }
+}
+@-o-keyframes line {
+  0% {
+    top: 3px;
+  }
+  50% {
+    top: 89px;
+  }
+  100% {
+    top: 3px;
+  }
+}
+@keyframes line {
+  0% {
+    top: 3px;
+  }
+  50% {
+    top: 89px;
+  }
+  100% {
+    top: 3px;
+  }
+}
+@-moz-keyframes up1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 93px;
+  }
+}
+@-webkit-keyframes up1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 93px;
+  }
+}
+@-o-keyframes up1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 93px;
+  }
+}
+@keyframes up1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 93px;
+  }
+}
+@-moz-keyframes down1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 174px;
+  }
+}
+@-webkit-keyframes down1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 174px;
+  }
+}
+@-o-keyframes down1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 174px;
+  }
+}
+@keyframes down1 {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 174px;
+  }
+}
+@-moz-keyframes icon3 {
+  0% {
+    background-position-x: -269px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}
+@-webkit-keyframes icon3 {
+  0% {
+    background-position-x: -269px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}
+@-o-keyframes icon3 {
+  0% {
+    background-position-x: -269px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}
+@keyframes icon3 {
+  0% {
+    background-position-x: -269px;
+  }
+  100% {
+    background-position-x: 0;
+  }
+}
+@-moz-keyframes bt {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@-webkit-keyframes bt {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@-o-keyframes bt {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes bt {
+  0% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+}

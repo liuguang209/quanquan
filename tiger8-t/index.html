@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+  <noscript><meta http-equiv="refresh" content="0; url=unsupported.html"></noscript>
+  <title></title>
+  <!-- css -->
+  <link href="../../css/main.css" rel="stylesheet">
+  <link href="tiger.css?v=1" rel="stylesheet">
+</head>
+<body>
+  <!-- html -->
+  <section id="page-index" class="master-page vpage">
+    <div class="vpage-wrapper">
+      <div class="vpage-content">
+      <!--  <div class="startbt"></div>  -->
+        <div class="top"></div>
+        <div class="icon1">
+          <div class="startbt"></div>
+          <div class="tiger">
+            <div class="machine one"></div>
+            <div class="machine two" style="background-position-y:-115px;"></div>
+            <div class="machine three" style="background-position-y:-230px;"></div>
+          </div>
+          <div class="count drawcounts">还剩<span>-</span>次机会</div>
+        </div>
+        <div class="bottom">
+          <div class="myAward"></div>
+          <div class="activityRules"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="share hide">
+    <div class="sharepanel">
+      <div class="close"></div>
+      <div class="sharemark"></div>
+      <div class="sharemark2 hide"></div>
+    </div>
+  </div>
+  <div class="rules hide">
+    <div class="rulesPanel">
+      <div class="returnBt"></div>
+    </div>
+  </div>
+  <div class="winSection hide">
+    <div class="star"></div>
+    <div class="prizeName1 hide"></div>
+    <div class="prizeName2 hide"></div>
+    <div class="prizeName3 hide"></div>
+    <div class="prizeName4 hide"></div>
+    <div class="prizeName5 hide"></div>
+    <div class="prizeName6 hide"></div>
+    <div class="winPanel">
+      <div class="myAward_2"></div>
+      <div class="repeatGame"></div>
+    </div>
+  </div>
+  <div class="failSection hide">
+    <div class="fail_1"></div>
+    <div class="fail_2"></div>
+    <div class="failPanel">
+      <div class="fail_3"></div>
+      <div class="fail_4"></div>
+    </div>
+  </div>
+  <div class="sub hide">
+    <div class="subpanel">
+      <div class="close"></div>
+      <div class="subbt"></div>
+    </div>
+  </div>
+<script src="./host.js"></script>
+<script>
+function pageInit($, query) {
+
+  // return openUrl("./end.html");
+
+  $$.SHARE_TITLE = '10大女人每天必玩游戏之一';
+  $$.SHARE_DESC = '摇！摇！摇！老虎机很任性，中奖很容易！';
+  $$.SHARE_IMG_URL = location.protocol + '//' + location.host + '/activities/tiger8-t/images/share.png';
+  $$.SHARE_LINK = location.protocol + '//' + location.host + '/activities/tiger8-t/index.html';
+
+  // $$.api.activity({
+  //       obj:{
+  //         acode: "zxljf20150724",
+  //         drawcounts: 2
+  //       }
+  //     }, function(code, msg){
+  //       if(this.ok(code, msg)){
+  //       }
+  //     }, {action: "/activity/comm/CommActivityAction/addDrawcounts"});
+
+  var page = $("#page-index");
+  var myAward = $(".myAward");
+  var activityRules = $(".activityRules");
+  var share = $(".share");
+  var winSection = $(".winSection");
+  var failSection = $(".failSection");
+  var sub = $(".sub");
+  var rules = $(".rules");
+
+  var loading = false;
+  var u = 115;
+  var one_duration = 3000,//转动持续时间
+    two_duration = 3200,
+    three_duration = 3600;
+
+  var playcount=0;
+
+  var info, prizelist;
+
+  //播放音乐
+  var processAudio = new Audio();
+  processAudio.src = './process.mp3';
+  processAudio.loop = false;
+  processAudio.load();
+  var stopAudio = new Audio();
+  stopAudio.src = './stop3.mp3';
+  stopAudio.loop = false;
+  stopAudio.load();
+  var winAudio = new Audio();
+  winAudio.src = './win.mp3';
+  winAudio.loop = false;
+  winAudio.load();
+
+  initPartner();
+
+//点击开始按钮事件处理
+  page.find(".startbt").singleTap(function(){
+    if((info.drawcounts - info.drawedcounts) > 0){
+      game();
+    }else{
+      game();
+      //win(6);
+      //fail();
+      //nodrawecounts();
+    }
+  });
+
+//点击我的奖劵
+  page.find(".myAward").singleTap(function(){
+    $$.api.activity({
+      obj: {
+        acode: "zxljf20150724"
+        }
+      },function(code, msg){
+        if(this.ok(code,msg)){
+          if(msg.length > 0){
+            openUrl("./prize.html");
+          } else {
+            $$.Dialog("抱歉，您目前没有可以领取的奖劵");
+          }
+          
+        }
+      },{action: "/activity/comm/CommActivityAction/myAward"});
+    
+  });
+
+  sub.find(".subbt").tap(function(){
+    openUrl($$.SUBS_URL);
+  });
+
+//点击活动规则
+  page.find(".activityRules").singleTap(function(){
+    rules.removeClass("hide");
+  });
+
+//点击分享界面关闭按钮
+  share.find(".close").tap(function(){
+    share.addClass("hide");
+    showIndexBt();
+  });
+
+//点击分享界面关闭按钮
+  sub.find(".close").tap(function(){
+    sub.addClass("hide");
+    showIndexBt();
+  });
+
+//点击分享活动按钮
+  share.find(".sharemark").tap(function(){
+    initPartner();
+    share.find(".sharemark2").removeClass("hide");
+  });
+
+//点击 活动规则--->返回游戏界面
+  rules.find(".returnBt").singleTap(function(){
+    rules.addClass("hide");
+    //initPartner();
+    showIndexBt();
+  })
+
+//点击 中奖--->我的奖劵
+  winSection.find(".myAward_2").singleTap(function(){
+    openUrl("./prize.html");
+  });
+
+//点击 中奖--->再来一次
+  winSection.find(".repeatGame").singleTap(function(){
+    winSection.addClass("hide");
+    //initPartner();
+    if((info.drawcounts - info.drawedcounts) > 0){
+      showIndexBt();
+    }else{
+      nodrawecounts();
+    }
+    
+  });
+
+//点击 未中奖--->我的奖劵
+  failSection.find(".fail_3").singleTap(function(){
+    $$.api.activity({
+      obj: {
+        acode: "zxljf20150724"
+        }
+      },function(code, msg){
+        if(this.ok(code,msg)){
+          if(msg.length > 0){
+            openUrl("./prize.html");
+          } else {
+            $$.Dialog("抱歉，您目前没有可以领取的奖劵");
+          }
+          
+        }
+      },{action: "/activity/comm/CommActivityAction/myAward"});
+    
+  })
+
+//点击 未中奖--->再来一次
+  failSection.find(".fail_4").singleTap(function(){
+    failSection.addClass("hide");
+    //initPartner();
+    if((info.drawcounts - info.drawedcounts) > 0){
+      showIndexBt();
+    }else{
+      nodrawecounts();
+    }
+  })
+
+  if(query.channel){
+    $$.api.activity({
+      obj: {
+        urlchannel: query.channel
+      }
+    }, function(code, msg){
+      // if(this.ok(code, msg)){
+      // }
+    }, {action: "/global/Qrcode/addUrlchannellog"});
+  }
+
+//初始化游戏界面，如果没有参加活动就加入
+  function initPartner(){
+    $$.api.activity({
+      obj: {
+        acode: "zxljf20150724"
+      }
+    }, function(code, msg){   
+      if(this.ok(code, msg)){
+        if(msg.info){
+          page.find(".drawcounts span").html((msg.info.drawcounts - msg.info.drawedcounts) || 0);
+        }else{
+          $$.api.activity({
+            obj: {
+              acode: "zxljf20150724",
+              drawcounts: 3
+            }
+          }, function(code, msg){
+            if(this.ok(code, msg)){
+              initPartner();
+            }
+          }, {action: "/activity/comm/CommActivityAction/join"});
+        }
+      }
+    }, {action: "/activity/comm/CommActivityAction/info"});
+  }
+
+//判断是否中奖
+  function game() {
+    //开始抽奖
+    if(loading){
+      return;
+    }
+    loading = true;
+    begintiger();
+    //调用接口抽奖
+    $$.api.activity({
+      obj: {
+        acode: 'zxljf20150724'
+      }
+    }, function(code, msg) {
+      if (msg) {
+//中奖种类图片如何显示
+//1--->300,2--->500,3--->1000,4--->10000, 5--->,6--->100
+        switch(msg.id){
+          case 28:
+          case 29:
+          case 30:
+          case 31:
+            one=two=three=6;//100
+            break;
+          case 32:
+            one=two=three=1;//300
+            break;
+          case 33:
+            one=two=three=2;//500
+            break;
+          case 34:
+            one=two=three=3;//1000
+            break;
+          case 9:
+            one=two=three=4;//10000
+            break;
+        }
+      } else {
+        one = random(0, 4);
+        two = random(0, 4);
+        three = random(0, 4);
+        if(one == two && two == three){
+          one = 0;
+          two = 1;
+          three = 2;
+        }
+      }
+      //tiger(one, two, three);
+      tiger(3, 3, 3);
+    }, {
+      mask: false,
+      action: '/activity/comm/CommActivityAction/draw'
+    });
+  }
+
+//老虎机转动显示
+  function begintiger(){
+    processAudio.play();
+    var onemachine = page.find('.machine.one');
+    var twomachine = page.find('.machine.two');
+    var threemachine = page.find('.machine.three');
+    one_animator = new $.Animator({
+      duration: 20000,
+      startValue: 0,
+      endValue: (u * 60 - u * 0),
+      onStep: function() {
+        onemachine.style('backgroundPositionY', this.value + 'px');
+      }
+    });
+    two_animator = new $.Animator({
+      duration: 20200,
+      startValue: 0,
+      endValue: (u * 60 - u * 1),
+      onStep: function() {
+        twomachine.style('backgroundPositionY', this.value + 'px');
+      }
+    });
+    three_animator = new $.Animator({
+      duration: 20600,
+      startValue: 0,
+      endValue: (u * 60 - u * 2),
+      onStep: function() {
+        threemachine.style('backgroundPositionY', this.value + 'px');
+      }
+    });
+    setTimeout(function(){
+      one_animator.start();
+      two_animator.start();
+      three_animator.start();
+    }, 500);
+  }
+
+
+  //var i = 1;
+//停止转动后的结果显示
+  function tiger(one, two, three) {
+    var onemachine = page.find('.machine.one');
+    var twomachine = page.find('.machine.two');
+    var threemachine = page.find('.machine.three');
+    one_animator.stop();
+    two_animator.stop();
+    three_animator.stop();
+    one_animator = new $.Animator({
+      duration: one_duration,
+      startValue: 0,
+      endValue: (u * 60 - u * one),
+      onStep: function() {
+        onemachine.style('backgroundPositionY', this.value + 'px');
+       //console.log(i + "--->" + this.value);
+        //i++;
+      }
+    });
+    two_animator = new $.Animator({
+      duration: two_duration,
+      startValue: 0,
+      endValue: (u * 60 - u * two),
+      onStep: function() {
+        twomachine.style('backgroundPositionY', this.value + 'px');
+      },
+      onEnd: function(){
+        if (!processAudio.paused) {
+          processAudio.pause();
+        }
+        stopAudio.play();
+      }
+    });
+    three_animator = new $.Animator({
+      duration: three_duration,
+      startValue: 0,
+      endValue: (u * 60 - u * three),
+      onStep: function() {
+        threemachine.style('backgroundPositionY', this.value + 'px');
+      },
+      onEnd: function(){
+        loading = false;
+        if(one == two && two == three){
+          win(one);
+        } else {
+          fail();
+        }
+        //checkbt(false);
+      }
+    });
+    one_animator.start();
+    two_animator.start();
+    three_animator.start();
+  }
+
+//检查能否开始游戏
+  function checkbt(bool){
+    $$.api.activity({
+      obj: {
+        acode: "zxljf20150724"
+      }
+    }, function(code, msg){
+      if(this.ok(code, msg)){
+        if(msg.info){
+          info = msg.info;
+          prizelist = msg.prizelist;
+          if(playcount > 0 && (info.drawcounts - info.drawedcounts) <= 0){
+            nodrawecounts();
+          }
+          playcount++;
+          refreshShow();
+        }else{
+          $$.api.activity({
+            obj: {
+              acode: "zxljf20150724",
+              drawcounts: 3
+            }
+          }, function(code, msg){
+            if(this.ok(code, msg)){
+              checkbt();
+            }
+          }, {action: "/activity/comm/CommActivityAction/join"});
+        }
+      }
+    }, {action: "/activity/comm/CommActivityAction/info", mask:bool});
+  }
+
+//刷新次数显示
+  function refreshShow(){
+    var totalCounts = 0;
+    prizelist.forEach(function(item){
+      totalCounts += item.counts;
+    });
+    //page.find(".totalcounts span").html(totalCounts);
+    page.find(".drawcounts span").html((info.drawcounts - info.drawedcounts) || 0);
+  }
+
+  checkbt();
+
+//没有游戏次数
+  function nodrawecounts(){
+    if($$.api.isSubScr()){
+      share.removeClass("hide");
+      myAward.addClass("hide");
+      activityRules.addClass("hide");
+    } else {
+      sub.removeClass("hide");
+      myAward.addClass("hide");
+      activityRules.addClass("hide");  
+    }
+  }
+
+//中奖
+  function win(prizeId){
+    winAudio.play();   
+    switch(prizeId){
+      case 6://100元
+        winSection.find(".prizeName1").removeClass("hide");
+        break;
+      case 1://300元
+        winSection.find(".prizeName2").removeClass("hide");
+        break;
+      case 2://500元
+        winSection.find(".prizeName3").removeClass("hide");
+        break;
+      case 3://1000元
+        winSection.find(".prizeName4").removeClass("hide");
+        break;
+      case 4://10000元
+        winSection.find(".prizeName5").removeClass("hide");
+        break;
+      case 5://100000元
+        winSection.find(".prizeName6").removeClass("hide");
+        break;
+    }
+    winSection.removeClass("hide");
+    myAward.addClass("hide");
+    activityRules.addClass("hide");
+  }
+
+//没中奖
+  function fail(){
+    failSection.removeClass("hide");
+    myAward.addClass("hide");
+    activityRules.addClass("hide");
+  }
+
+//显示主界面button
+  function showIndexBt(){
+    myAward.removeClass("hide");
+    activityRules.removeClass("hide");
+  }
+
+//分享
+  $$.SHARE_CALLBACK_OK = function(type){
+    if($$.api.isSubScr() && type == 2){
+      $$.api.activity({
+        obj:{
+          acode: "zxljf20150724",
+          drawcounts: 3
+        }
+      }, function(code, msg){
+        if(this.ok(code, msg)){
+          share.addClass("hide");
+          showIndexBt();
+        }
+      }, {action: "/activity/comm/CommActivityAction/addDrawcounts"});
+      $$.api.activity({
+        obj:{
+          acode: "zxljf20150724"
+        }
+      }, function(code, msg){
+        if(this.ok(code, msg)){
+        }
+      }, {action: "/activity/comm/CommActivityAction/share"});
+    }
+  }
+
+  function random(min, max) {
+    return Math.floor(min + Math.random() * (max - min));
+  }
+
+  return {
+    menu: false,
+    fixedIcon: false
+  };
+}
+</script>
+<script src="../../main.js" data-main=""></script>
+<!-- <script src="easing.js"></script> -->

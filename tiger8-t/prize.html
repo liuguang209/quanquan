@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no, email=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=medium-dpi">
+  <noscript><meta http-equiv="refresh" content="0; url=unsupported.html"></noscript>
+  <title></title>
+  <!-- css -->
+  <link href="../../css/main.css" rel="stylesheet">
+  <link href="tiger.css?v=1" rel="stylesheet">
+</head>
+<body>
+  <!-- html -->
+  <section id="page-prize" class="master-page vpage">
+    <div class="vpage-wrapper">
+      <div class="vpage-content">
+
+        <div class="lottery100 hide">
+          <div class="button100 hide"></div>
+        </div>
+        <div class="lottery100_1 hide"></div>
+
+        <div class="lottery1002 hide">
+          <div class="button1002 hide"></div>
+        </div>
+        <div class="lottery100_2 hide"></div>
+
+        <div class="lottery1003 hide">
+          <div class="button1003 hide"></div>
+        </div>
+        <div class="lottery100_3 hide"></div>
+
+        <div class="lottery1004 hide">
+          <div class="button1004 hide"></div>
+        </div>
+        <div class="lottery100_4 hide"></div>
+
+        <div class="lottery1005 hide">
+          <div class="button1005 hide"></div>
+        </div>
+        <div class="lottery100_5 hide"></div>
+
+        <div class="lottery300 hide">
+          <div class="button300 hide"></div>
+        </div>
+        <div class="lottery300_1 hide"></div>
+        
+        <div class="lottery500 hide">
+          <div class="button500 hide"></div>
+        </div>
+        <div class="lottery500_1 hide"></div>
+        
+        <div class="lottery1000 hide">
+          <div class="button1000 hide"></div>
+        </div>
+        <div class="lottery1000_1 hide"></div>
+
+        <div class="lottery10000 hide">
+          <div class="button10000 hide"></div>
+        </div>
+        <div class="lottery10000_1 hide"></div>
+        
+        <div class="lottery100000 hide">
+          <div class="button100000 hide"></div>
+        </div>
+        <div class="lottery100000_1 hide"></div>
+
+      </div>
+    </div>
+  </section>
+  <div class="lotteryPanel ">
+    <div class="backbt"></div>
+    <div class="detail"></div>
+    <div class="backLottery hide"></div>
+  </div>
+  <div class="prizeRules hide"></div>
+  <div class="sub hide">
+    <div class="subpanel">
+      <div class="subbt"></div>
+    </div>
+  </div>
+<script src="./host.js"></script>
+<script>
+function pageInit($, query) {
+
+  $$.SHARE_TITLE = '10大女人每天必玩游戏之一';
+  $$.SHARE_DESC = '摇！摇！摇！老虎机很任性，中奖很容易！';
+  $$.SHARE_IMG_URL = location.protocol + '//' + location.host + '/activities/tiger8-t/images/share.png';
+  $$.SHARE_LINK = location.protocol + '//' + location.host + '/activities/tiger8-t/index.html';
+
+  var page = $("#page-prize");
+  var prcRules = $(".prizeRules");
+  var lotteryPanel = $(".lotteryPanel");
+
+  var info;
+
+  $$.api.activity({
+    obj: {
+      acode: "zxljf20150724"
+    }
+  }, function(code, msg){
+    if(this.ok(code, msg)){
+      info = msg.info;
+      $$.api.activity({
+        obj: {
+          acode: "zxljf20150724"
+        }
+      }, function(code, msg){
+        if(this.ok(code, msg)){
+          if(info.isreceive > 0){
+            return;
+          }
+          msg.forEach(function(item){
+            switch(item.prizeid){
+              case 28://100元奖券
+                if(item.state == 1){
+                  page.find(".lottery100").addClass("hide");   
+                  page.find(".lottery100_1").removeClass("hide");
+                }else{
+                  page.find(".lottery100").removeClass("hide");
+                  page.find(".button100").removeClass("hide");
+                }
+                break;
+
+              case 29://100元奖券
+                if(item.state == 1){
+                  page.find(".lottery1002").addClass("hide");   
+                  page.find(".lottery100_2").removeClass("hide");
+                }else{
+                  page.find(".lottery1002").removeClass("hide");
+                  page.find(".button1002").removeClass("hide");
+                }
+                break;
+                
+              case 30://100元奖券
+                if(item.state == 1){
+                  page.find(".lottery1003").addClass("hide");   
+                  page.find(".lottery100_3").removeClass("hide");
+                }else{
+                  page.find(".lottery1003").removeClass("hide");
+                  page.find(".button1003").removeClass("hide");
+                }
+                break;
+
+              case 31://100元奖券
+                if(item.state == 1){
+                  page.find(".lottery1004").addClass("hide");   
+                  page.find(".lottery100_4").removeClass("hide");
+                }else{
+                  page.find(".lottery1004").removeClass("hide");
+                  page.find(".button1004").removeClass("hide");
+                }
+                break;
+
+              case 32://300元奖券
+               if(item.state == 1){
+                  page.find(".lottery300").addClass("hide");   
+                  page.find(".lottery300_1").removeClass("hide");
+                }else{
+                  page.find(".lottery300").removeClass("hide");
+                  page.find(".button300").removeClass("hide");
+                }
+                break;
+
+              case 33://500元奖券
+                if(item.state == 1){
+                  page.find(".lottery500").addClass("hide");   
+                  page.find(".lottery500_1").removeClass("hide");
+                }else{
+                  page.find(".lottery500").removeClass("hide");
+                  page.find(".button500").removeClass("hide");
+                }
+
+                // //test===========================>
+                // page.find(".lottery500").removeClass("hide");
+                // page.find(".button500").removeClass("hide");
+
+                break;
+
+              case 34://1000元奖券
+                if(item.state == 1){
+                  page.find(".lottery1000").addClass("hide");   
+                  page.find(".lottery1000_1").removeClass("hide");
+                }else{
+                  page.find(".lottery1000").removeClass("hide");
+                  page.find(".button1000").removeClass("hide");
+                }
+
+                // //test===========================>
+                // page.find(".lottery1000").removeClass("hide");
+                // page.find(".button1000").removeClass("hide");
+
+                break;
+
+              // case 5://10000元奖券
+              //   if(item.state == 1){
+              //     page.find(".lottery10000").addClass("hide");   
+              //     page.find(".lottery10000_1").removeClass("hide");
+              //   }else{
+              //     page.find(".button10000_1").removeClass("hide");
+              //   }
+              //   break;
+
+              // case 6://100000元奖券
+              //   //page.find(".button100000").removeClass("hide");
+              //   if(item.state == 1){
+              //     page.find(".lottery100000").addClass("hide");   
+              //     page.find(".lottery100000_1").removeClass("hide");
+              //   }else{
+              //     page.find(".button100000").removeClass("hide");
+              //   }
+              //  break;
+            }
+          });
+        }
+      }, {action: "/activity/comm/CommActivityAction/myAward"});
+    }
+  }, {action: "/activity/comm/CommActivityAction/info"});
+
+  lotteryPanel.find(".backbt").singleTap(function(){
+    openUrl("./index.html");
+  });
+
+  lotteryPanel.find(".detail").singleTap(function(){
+    prcRules.removeClass("hide");
+    lotteryPanel.find(".backLottery").removeClass("hide");
+    lotteryPanel.find(".detail").addClass("hide");
+  });
+
+  lotteryPanel.find(".backLottery").singleTap(function(){
+    prcRules.addClass("hide");
+    lotteryPanel.find(".backLottery").addClass("hide");
+    lotteryPanel.find(".detail").removeClass("hide");
+  })
+
+  page.find(".button100").singleTap(function(){
+    
+      //$$.Dialog("已经领过奖品");
+      //显示是否要买领奖
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 28 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery100").addClass("hide"); 
+            page.find(".lottery100_1").removeClass("hide");
+          }
+            // else{
+
+            // };
+      }}); 
+
+    });
+
+  page.find(".button1002").singleTap(function(){
+    
+      //$$.Dialog("已经领过奖品");
+      //显示是否要买领奖
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 29 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery1002").addClass("hide"); 
+            page.find(".lottery100_2").removeClass("hide");
+          }
+            // else{
+
+            // };
+      }}); 
+
+    });
+
+  page.find(".button1003").singleTap(function(){
+    
+      //$$.Dialog("已经领过奖品");
+      //显示是否要买领奖
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 30 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery1003").addClass("hide"); 
+            page.find(".lottery100_3").removeClass("hide");
+          }
+            // else{
+
+            // };
+      }}); 
+
+    });
+
+  page.find(".button1004").singleTap(function(){
+    
+      //$$.Dialog("已经领过奖品");
+      //显示是否要买领奖
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 31 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery1004").addClass("hide"); 
+            page.find(".lottery100_4").removeClass("hide");
+          }
+            // else{
+
+            // };
+      }}); 
+
+    });
+
+  page.find(".button1005").singleTap(function(){
+    
+      //$$.Dialog("已经领过奖品");
+      //显示是否要买领奖
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 3 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery1005").addClass("hide"); 
+            page.find(".lottery100_5").removeClass("hide");
+          }
+            // else{
+
+            // };
+      }}); 
+
+    });
+
+  page.find(".button300").singleTap(function(){
+    
+    //$$.Dialog("已经领过奖品");
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 32 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery300").addClass("hide"); 
+            page.find(".lottery300_1").removeClass("hide");
+          }
+            // else{
+
+            // };
+      }}); 
+
+  });
+
+  page.find(".button500").singleTap(function(){
+    
+    //$$.Dialog("已经领过奖品");
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 33 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery500").addClass("hide"); 
+            page.find(".lottery500_1").removeClass("hide");
+          }
+            // else{
+
+            // };
+      }}); 
+
+  });
+
+  page.find(".button1000").singleTap(function(){
+    
+    new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+           if(e.result==1){
+             $$.api.activity({
+              obj: {
+                acode: "zxljf20150724"
+              }
+            }, function(code, msg){
+              if(this.ok(code, msg)){
+                msg.forEach(function(item){
+                  if(item.prizeid == 34 && item.state == 0){
+                    $$.api.activity({
+                      obj: {
+                        acode: "zxljf20150724",
+                        id: item.id,
+                        state: 1
+                      }
+                    },function(code, msg){
+                      if(this.ok(code, msg)){
+
+                      }
+                    },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+                  }
+                });
+              }
+            }, {action: "/activity/comm/CommActivityAction/myAward"});
+            page.find(".lottery1000").addClass("hide"); 
+            page.find(".lottery1000_1").removeClass("hide");
+          }
+            
+      }}); 
+
+  }); 
+
+  // page.find(".button102_1").singleTap(function(){
+    
+  //   //$$.Dialog("已经领过奖品");
+  //   new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+  //          if(e.result==1){
+  //            $$.api.activity({
+  //             obj: {
+  //               acode: "zxljf20150724"
+  //             }
+  //           }, function(code, msg){
+  //             if(this.ok(code, msg)){
+  //               msg.forEach(function(item){
+  //                 if(item.prizeid == 5 && item.state == 0){
+  //                   $$.api.activity({
+  //                     obj: {
+  //                       acode: "zxljf20150724",
+  //                       id: item.id,
+  //                       state: 1
+  //                     }
+  //                   },function(code, msg){
+  //                     if(this.ok(code, msg)){
+
+  //                     }
+  //                   },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+  //                 }
+  //               });
+  //             }
+  //           }, {action: "/activity/comm/CommActivityAction/myAward"});
+  //           page.find(".lottery102").addClass("hide"); 
+  //           page.find(".lottery102_1").removeClass("hide");
+  //         }
+  //           // else{
+
+  //           // };
+  //     }}); 
+
+  // }); 
+
+  //  page.find(".button200_1").singleTap(function(){
+    
+  //   //$$.Dialog("已经领过奖品");
+  //  new $$.Dialog("你确认领取奖品吗？",{autoClose:false,shade:true,button:true,callback:function(e){
+  //          if(e.result==1){
+  //            $$.api.activity({
+  //             obj: {
+  //               acode: "zxljf20150724"
+  //             }
+  //           }, function(code, msg){
+  //             if(this.ok(code, msg)){
+  //               msg.forEach(function(item){
+  //                 if(item.prizeid == 6 && item.state == 0){
+  //                   $$.api.activity({
+  //                     obj: {
+  //                       acode: "zxljf20150724",
+  //                       id: item.id,
+  //                       state: 1
+  //                     }
+  //                   },function(code, msg){
+  //                     if(this.ok(code, msg)){
+
+  //                     }
+  //                   },{action: "/activity/comm/CommActivityAction/updatePartnerPrizeState"});
+  //                 }
+  //               });
+  //             }
+  //           }, {action: "/activity/comm/CommActivityAction/myAward"});
+  //           page.find(".lottery200").addClass("hide"); 
+  //           page.find(".lottery200_1").removeClass("hide");
+  //         }
+          
+  //     }}); 
+
+  // }); 
+
+  $$.SHARE_CALLBACK_OK = function(type){
+    if($$.api.isSubScr() && type == 2){
+      $$.api.activity({
+        obj:{
+          acode: "zxljf20150724",
+          drawcounts: 3
+        }
+      }, function(code, msg){
+        if(this.ok(code, msg)){
+          share.addClass("hide");
+          showIndexBt();
+        }
+      }, {action: "/activity/comm/CommActivityAction/addDrawcounts"});
+      $$.api.activity({
+        obj:{
+          acode: "zxljf20150724"
+        }
+      }, function(code, msg){
+        if(this.ok(code, msg)){
+        }
+      }, {action: "/activity/comm/CommActivityAction/share"});
+    }
+  }
+
+return {
+    menu: false,
+    fixedIcon: false
+  };
+}
+</script>
+<script src="../../main.js" data-main=""></script>
+<!-- <script src="easing.js"></script> -->
+<!--
+    delete from a_comm_config where acode='zxljf20150724';
+
+    insert into a_comm_config (acode,appid,name,needsubscribe,needshare,subcribeadd,valid) values ('zxljf20150724','wx2f8c26dd0fc34cd6','zxljf20150724',1,1,3,1);
+
+    delete from a_comm_prizegroup where acode='zxljf20150724';
+
+    insert into a_comm_prizegroup (name,acode,maxcounts,maxdaycounts,id) values ('zxljf20150724','zxljf20150724',100000,100000,124);
+
+    delete from a_comm_prize where acode='zxljf20150724';
+
+    insert into a_comm_prize (id,acode,prizegroupid,name,maxcounts,maxdaycounts,rate) values (3,'zxljf20150724',124,'100元',100000,100000,50);
+
+    insert into a_comm_prize (id,acode,prizegroupid,name,maxcounts,maxdaycounts,rate) values (4,'zxljf20150724',124,'300元',100000,100000,45);
+
+    insert into a_comm_prize (id,acode,prizegroupid,name,maxcounts,maxdaycounts,rate) values (5,'zxljf20150724',124,'500元',20,20,4.9);
+
+    insert into a_comm_prize (id,acode,prizegroupid,name,maxcounts,maxdaycounts,rate) values (6,'zxljf20150724',124,'1000元',10,10,0.1);
+
+-->
